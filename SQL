@@ -1,0 +1,72 @@
+CREATE DATABASE lib;
+USE lib;
+CREATE TABLE book (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    category VARCHAR(30),
+    price DECIMAL(8,2),
+    quantity INT,
+    published_year INT
+);
+    
+INSERT INTO book
+(title, author, category, price, quantity, published_year)
+VALUES
+('Atomic Habits', 'James Clear', 'Self-Help', 450.00, 15, 2018),
+('Clean Code', 'Robert Martin', 'Programming', 650.00, 8, 2008),
+('The Alchemist', 'Paulo Coelho', 'Fiction', 350.00, 12, 2014),
+('Python Crash Course', 'Eric Matthes', 'Programming', 750.00, 5, 2023),
+('Ikigai', 'Hector Garcia', 'Self-Help', 300.00, 20, 2016),
+('Rich Dad Poor Dad', 'Robert Kiyosaki', 'Finance', 550.00, 7, 1997),
+('Harry Potter', 'J.K. Rowling', 'Fiction', 600.00, 9, 2021),
+('Java Programming', 'Ramesh Kumar', 'Programming', 800.00, 6, 2022);
+
+SELECT * FROM book;
+SELECT title, author FROM book;
+SELECT * FROM book
+WHERE category = 'Programming';
+SELECT * FROM book
+WHERE price > 500;
+SELECT * FROM book
+WHERE quantity < 10;
+SELECT * FROM book
+WHERE published_year > 2020;
+SELECT * FROM book
+WHERE author = 'James Clear';
+SELECT title, price, quantity
+FROM book;
+SELECT * FROM book
+WHERE book_id BETWEEN 2 AND 5;
+SELECT * FROM book
+WHERE author LIKE 'R%';
+SELECT * FROM book
+WHERE category != 'Programming';
+
+
+SELECT * FROM book
+ORDER BY price DESC;
+SELECT * FROM book
+ORDER BY published_year ASC;
+SELECT * FROM book
+WHERE price > 500
+ORDER BY price DESC;
+SELECT * FROM book
+WHERE category = 'Programming'
+ORDER BY published_year DESC;
+SELECT * FROM book
+WHERE quantity < 10
+ORDER BY title ASC;
+SELECT * FROM book
+WHERE published_year BETWEEN 2015 AND 2023
+ORDER BY published_year ASC;
+SELECT * FROM book
+WHERE category IN ('Fiction', 'Self-Help')
+ORDER BY price DESC;
+SELECT * FROM book
+ORDER BY category ASC, price ASC;
+SELECT * FROM book
+WHERE category != 'Programming'
+ORDER BY title ASC;
+SELECT * FROM book
+ORDER BY published_year DESC, price DESC;
